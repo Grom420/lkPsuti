@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Список тем</title>
+    <link rel="stylesheet" type="text/css" href="../styles/uikit-min.css">
+    <script src="../styles/js/uikit.min.js"></script>
+    <script src="../styles/js/uikit-icons.min.js"></script>
+</head>
+<body>
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="/lk">Список тем</a></li>
+            <li>
+                <a href="#">Кафедры</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">ПОУТС</a></li>
+                        <li><a href="#">ИВТ</a></li>
+                        <li><a href="#">ВМ</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="/requests_lk">Заявки</a></li>
+            <li><a href="javascript: document.logoutForm.submit()" role="menuitem">Выйти</a></li>
+            <form name="logoutForm" action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                <input hidden type="submit" value="Sign Out"/>
+            </form>
+        </ul>
+
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="#">Дмитрий Колоярский</a></li>
+            <li><a href="#">ПО-71</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="uk-background-secondary uk-light uk-padding uk-panel">
+
+<table class="uk-table uk-table-middle uk-table-divider">
+    <thead>
+    <tr>
+        <th class="uk-width-small">Тема</th>
+        <th>Кафедра</th>
+        <th>Статус</th>
+        <th>Выбор</th>
+    </tr>
+    </thead>
+    <tbody>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    {{#lists}}
+    <tr>
+        <td>{{theme}}</td>
+        <td>{{department}}</td>
+        <td>Не занято</td>
+        <td>
+            <a class="uk-button uk-button-default" href="#modal-overflow" uk-toggle>Выбрать тему</a>
+            <div id="modal-overflow" uk-modal>
+                <div class="uk-modal-dialog">
+
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">Предупреждение</h2>
+                    </div>
+
+                    <div class="uk-modal-body" uk-overflow-auto>
+                        <p>Вы действительно хотите отправить заявку на выбор этой темы?</p>
+                    </div>
+
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Нет</button>
+                        <button class="uk-button uk-button-primary" type="button">Да</button>
+                    </div>
+
+                </div>
+            </div>
+        </td>
+    </tr>
+    {{/lists}}
+
+    </tbody>
+</table>
+
+<dl>
+    <dt>Description lists</dt>
+    <dd>A description list defines terms and their corresponding descriptions.</dd>
+    <dt>This is a term</dt>
+    <dd>This is a description.</dd>
+    <dt>This is a term</dt>
+    <dd>This is a description.</dd>
+</dl>
+<script>
+    function isEmpty(str) {
+    if (str.trim() == '')
+        return true;
+    return false;
+}</script>
+    </div>
+</body>
+</html>

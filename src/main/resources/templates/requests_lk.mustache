@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Заявки</title>
+    <link rel="stylesheet" type="text/css" href="../styles/uikit-min.css">
+    <script src="../styles/js/uikit.min.js"></script>
+    <script src="../styles/js/uikit-icons.min.js"></script>
+</head>
+<body>
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+            <li><a href="/lk">Список тем</a></li>
+            <li>
+                <a href="#">Кафедры</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">ПОУТС</a></li>
+                        <li><a href="#">ИВТ</a></li>
+                        <li><a href="#">ВМ</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="uk-active"><a href="/requests_lk">Заявки</a></li>
+            <li><a href="javascript: document.logoutForm.submit()" role="menuitem">Выйти</a></li>
+            <form name="logoutForm" action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                <input hidden type="submit" value="Sign Out"/>
+            </form>
+        </ul>
+
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="#">Дмитрий Колоярский</a></li>
+            <li><a href="#">ПО-71</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="uk-background-secondary uk-light uk-padding uk-panel">
+
+    <div>
+        <i>Пока нет заявок</i>
+    </div>
+
+
+    <dl>
+        <dt>Description lists</dt>
+        <dd>A description list defines terms and their corresponding descriptions.</dd>
+        <dt>This is a term</dt>
+        <dd>This is a description.</dd>
+        <dt>This is a term</dt>
+        <dd>This is a description.</dd>
+    </dl>
+    <script>
+        function isEmpty(str) {
+            if (str.trim() == '')
+                return true;
+            return false;
+        }</script>
+</div>
+</body>
+</html>
